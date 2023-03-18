@@ -1,10 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './variables';
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Arial;
+	font-family: 'Inter';
 	font-size: 16px;
-	line-height: 1;
+	list-style: none;
+}
+
+a {
+	display: block;
+}
+
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	background-color: $lightgray;
+	overflow-x: hidden;
+}
+
+.main {
+	flex-grow: 1;
+
+	&__content {
+		background-color: white;
+	}
+}
+
+.container {
+	margin: 0 auto;
+	max-width: $container_width;
+	padding-left: $container_padding;
+	padding-right: $container_padding;
+}
+
+.hoverable {
+	border-radius: 3px;
+	padding: 3px 5px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $lightgray;
+	}
 }

@@ -1,47 +1,45 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import useTags from '../../hooks/useTags';
 import classes from './search.module.scss';
+import SearchResult from './SearchResult';
 
 export default function Search() {
-	const [active, setActive] = useState(false);
-	const { signature, setSignature, userTags, setUserTags, fetchedTags, loading } =
-		useTags();
+	const inputRef = useRef();
+	const { signature, setSignature, fetchedTags, loading } = useTags();
 
 	const changeSignature = (e) => {
-		const tags = e.target.value.split(' ');
-		setSignature(tags[tags.length - 1]);
+		const { value } = e.target;
+		setSignature(value);
+	};
+
+	const addTag = (tag) => {
+		const tags = signature.split(' ');
+		tags[tags.length - 1] = tag;
+		setSignature(tags.join(' ') + ' ');
+		inputRef.current.focus();
+	};
+
+	const moveInput = (e) => {
+		if (e.key === 'ArrowDown') {
+			console.log('go');
+		}
 	};
 
 	return (
 		<div className={classes.input}>
 			<input
+				ref={inputRef}
 				type='text'
 				onChange={changeSignature}
-				value={`${userTags.join(' ')} ${signature}`}
+				value={signature}
 				placeholder='Type something...'
-				onFocus={() => setActive(true)}
-				onBlur={() => setActive(false)} // FIXME
+				onKeyDown={moveInput}
 			/>
 			<BiSearchAlt2 />
-			{active && (
-				<div className={classes.result}>
-					{fetchedTags.length === 0 && !loading ? (
-						<h2>Nothing to show...</h2>
-					) : (
-						<ul>
-							{fetchedTags.map((t) => (
-								<li
-									className={classes.item}
-									key={t.id}
-									onClick={() => setUserTags([...userTags, t.name])}
-								>
-									{t.name}
-								</li>
-							))}
-						</ul>
-					)}
-				</div>
+			{/* FIXME */}
+			{signature.split(' ')[signature.split(' ').length - 1].length > 0 && (
+				<SearchResult fetchedTags={fetchedTags} addTag={addTag} />
 			)}
 			<button className={classes.searchButton}>Search</button>
 		</div>

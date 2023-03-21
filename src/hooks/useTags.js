@@ -5,11 +5,18 @@ import useFetching from "./useFetching";
 
 export default function useTags() {
     const [signature, setSignature] = useState('');
-    const [userTags, setUserTags] = useState([]);
     const [fetchedTags, setFetchedTags] = useState([]);
 
     const [fetchTags, loading, error] = useFetching(async () => {
-        const response = await axios.get(`/images/tags?_signature=${signature}`); // FIXME
+        if (signature.trim().length === 0) return;
+        setFetchedTags([]);
+
+        const tags = signature.split(' ');
+        const response = await axios.get(`/images/tags`, {
+            params: {
+                _signature: tags[tags.length - 1]
+            }
+        }); // FIXME
         setFetchedTags(response.data);
     });
 
@@ -19,6 +26,6 @@ export default function useTags() {
         fetchTags();
     }, [debounced]);
 
-    return { signature, setSignature, userTags, setUserTags, fetchedTags, loading };
+    return { signature, setSignature, fetchedTags, loading, error };
 
 }

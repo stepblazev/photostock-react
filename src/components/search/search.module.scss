@@ -79,9 +79,12 @@
 	border-radius: 3px;
 	padding: 3px 5px;
 	cursor: pointer;
+	transition: all 0.2s ease;
 
 	&:hover {
-		color: #ffffff;
-		background-color: $dark;
+		background-color: $lightgray;
+	}
+	&.focus {
+		background-color: $lightgray;
 	}
 }

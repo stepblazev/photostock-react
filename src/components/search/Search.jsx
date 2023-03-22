@@ -4,6 +4,7 @@ import useTags from '../../hooks/useTags';
 import classes from './search.module.scss';
 import SearchResult from './SearchResult';
 
+// FIXME
 export default function Search() {
 	const inputRef = useRef();
 	const { signature, setSignature, fetchedTags, loading } = useTags();

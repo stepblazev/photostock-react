@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './styles/index.scss';
 
-axios.defaults.baseURL = 'http://localhost:9090/api'; // FIXME
+axios.defaults.baseURL = 'http://localhost:4760/api'; // FIXME
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>

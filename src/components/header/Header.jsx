@@ -37,7 +37,7 @@ export default function Header() {
 					<BiUserCircle />
 					<span className={classes.link}>Account</span>
 				</div>
-				<div className={[classes.burger].join(' ')}>
+				<div className={[classes.burger, 'hoverable'].join(' ')}>
 					<TbMenu2 />
 				</div>
 			</div>

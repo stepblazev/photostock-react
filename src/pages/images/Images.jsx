@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import useFetching from '../../hooks/useFetching';
+import classes from './images.module.scss';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
+// FIXME
 export default function Images() {
 	const [page, setPage] = useState(1);
 	const [images, setImages] = useState([]);
@@ -10,7 +13,7 @@ export default function Images() {
 		const { data } = await axios.get('/images', {
 			params: {
 				_page: page,
-				_tags: [].join(' '),
+				_tags: ['wallpaper'].join(' '),
 				_order: 'latest',
 			},
 		});
@@ -27,10 +30,26 @@ export default function Images() {
 			<h1 style={{ textAlign: 'center', padding: '30px' }}>IMAGES</h1>
 
 			{Boolean(images?.length) && (
-				<div className='list'>
+				<div className={classes.imageList}>
 					{images.map((image) => (
-						<div className='item'>
-							<img src={image.url} alt='ERROR' />
+						<div key={image.id} className={classes.imageItem}>
+							<img
+								src={`http://localhost:4760${image.url_webp_preview}`}
+								alt='ERROR'
+							/>
+							<div className={classes.imageItemInfo}>
+								<div className={classes.imageItemInfoAuthor}>
+									<img
+										src={`http://localhost:4760${image.author_url}`}
+										alt=''
+									/>
+									<h6>{image.author}</h6>
+								</div>
+								<div className={classes.imageItemInfoLikes}>
+									<AiOutlineHeart />
+									<span>{image.likes}</span>
+								</div>
+							</div>
 						</div>
 					))}
 				</div>

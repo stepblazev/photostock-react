@@ -38,14 +38,14 @@ export default function Images() {
 								alt='ERROR'
 							/>
 							<div className={classes.imageItemInfo}>
-								<div className={classes.imageItemInfoAuthor}>
+								<div className={classes.Author}>
 									<img
 										src={`http://localhost:4760${image.author_url}`}
 										alt=''
 									/>
 									<h6>{image.author}</h6>
 								</div>
-								<div className={classes.imageItemInfoLikes}>
+								<div className={classes.Likes}>
 									<AiOutlineHeart />
 									<span>{image.likes}</span>
 								</div>

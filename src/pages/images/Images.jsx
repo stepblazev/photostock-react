@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import useFetching from '../../hooks/useFetching';
 import classes from './images.module.scss';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import ImageList from '../../components/image-list/ImageList';
+import SearchBanner from '../../components/search-banner/SearchBanner';
 
 // FIXME
 export default function Images() {
@@ -17,8 +18,9 @@ export default function Images() {
 				_order: 'latest',
 			},
 		});
-		console.log(data);
-		setImages(data.images);
+
+		const images = data.images.map((image) => ({ ...image, liked: false }));
+		setImages(images);
 	});
 
 	useEffect(() => {
@@ -27,33 +29,8 @@ export default function Images() {
 
 	return (
 		<div style={{ height: '100%' }}>
-			<h1 style={{ textAlign: 'center', padding: '30px' }}>IMAGES</h1>
-
-			{Boolean(images?.length) && (
-				<div className={classes.imageList}>
-					{images.map((image) => (
-						<div key={image.id} className={classes.imageItem}>
-							<img
-								src={`http://localhost:4760${image.url_webp_preview}`}
-								alt='ERROR'
-							/>
-							<div className={classes.imageItemInfo}>
-								<div className={classes.Author}>
-									<img
-										src={`http://localhost:4760${image.author_url}`}
-										alt=''
-									/>
-									<h6>{image.author}</h6>
-								</div>
-								<div className={classes.Likes}>
-									<AiOutlineHeart />
-									<span>{image.likes}</span>
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			)}
+			<SearchBanner />
+			<ImageList images={images} />
 		</div>
 	);
 }

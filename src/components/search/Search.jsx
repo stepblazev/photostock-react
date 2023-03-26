@@ -5,7 +5,7 @@ import classes from './search.module.scss';
 import SearchResult from './SearchResult';
 
 // FIXME
-export default function Search() {
+export default function Search({ inputStyle, showSvg = true }) {
 	const inputRef = useRef();
 	const { signature, setSignature, fetchedTags, loading } = useTags();
 
@@ -30,6 +30,7 @@ export default function Search() {
 	return (
 		<div className={classes.input}>
 			<input
+				style={inputStyle}
 				ref={inputRef}
 				type='text'
 				onChange={changeSignature}
@@ -37,7 +38,7 @@ export default function Search() {
 				placeholder='Type something...'
 				onKeyDown={moveInput}
 			/>
-			<BiSearchAlt2 />
+			{showSvg && <BiSearchAlt2 />}
 			{/* FIXME */}
 			{signature.split(' ')[signature.split(' ').length - 1].length > 0 && (
 				<SearchResult fetchedTags={fetchedTags} addTag={addTag} />

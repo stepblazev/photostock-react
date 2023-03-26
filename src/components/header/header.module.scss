@@ -14,6 +14,7 @@
 	}
 
 	&Image {
+		display: block;
 		img {
 			height: 50px;
 		}
@@ -33,17 +34,6 @@
 	&Links {
 		display: flex;
 		gap: 15px;
-
-		&Tags {
-			display: flex;
-			align-items: center;
-			gap: 3px;
-			cursor: pointer;
-
-			svg {
-				transform: rotate(90deg);
-			}
-		}
 	}
 
 	&Underline {

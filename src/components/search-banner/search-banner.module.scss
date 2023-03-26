@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+
+.banner {
+	height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin-left: -$container_padding;
+	margin-right: -$container_padding;
+	margin-bottom: $container_padding;
+	background-color: $dark;
+
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	backdrop-filter: blur(100px);
+
+	&Content {
+		width: 700px;
+	}
+}
+
+.searchH1 {
+	margin-bottom: 10px;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 40px;
+	text-shadow: 1px 1px 2px #0000003f;
+	color: #ffffff;
+}
+
+.searchH6 {
+	margin-top: 10px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	text-shadow: 1px 1px 2px #0000003f;
+	color: #ffffff;
+}

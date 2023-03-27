@@ -27,13 +27,14 @@ export default function SearchBanner() {
 	if (!bgImage) return;
 
 	return (
-		<div
-			className={classes.banner}
-			// FIXME change url
-			style={{
-				backgroundImage: `url(${`http://localhost:4760${bgImage.url_webp_full}`})`,
-			}}
-		>
+		<div className={classes.banner}>
+			<div
+				className={classes.img}
+				// FIXME change url
+				style={{
+					backgroundImage: `url(${`http://localhost:4760${bgImage.url_webp_full}`})`,
+				}}
+			></div>
 			<div className={classes.bannerContent}>
 				<h1 className={classes.searchH1}>
 					You can find whatever you

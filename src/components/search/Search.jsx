@@ -21,11 +21,11 @@ export default function Search({ inputStyle, showSvg = true }) {
 		inputRef.current.focus();
 	};
 
-	const moveInput = (e) => {
-		if (e.key === 'ArrowDown') {
-			console.log('go');
-		}
-	};
+	// const moveInput = (e) => {
+	// 	if (e.key === 'ArrowDown') {
+	// 		console.log('go');
+	// 	}
+	// };
 
 	return (
 		<div className={classes.input}>
@@ -36,13 +36,13 @@ export default function Search({ inputStyle, showSvg = true }) {
 				onChange={changeSignature}
 				value={signature}
 				placeholder='Type something...'
-				onKeyDown={moveInput}
 			/>
 			{showSvg && <BiSearchAlt2 />}
 			{/* FIXME */}
-			{signature.split(' ')[signature.split(' ').length - 1].length > 0 && (
-				<SearchResult fetchedTags={fetchedTags} addTag={addTag} />
-			)}
+			{!loading &&
+				signature.split(' ')[signature.split(' ').length - 1].length > 0 && (
+					<SearchResult fetchedTags={fetchedTags} addTag={addTag} />
+				)}
 			<button className={classes.searchButton}>Search</button>
 		</div>
 	);

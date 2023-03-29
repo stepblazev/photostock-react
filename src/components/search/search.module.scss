@@ -82,15 +82,19 @@
 }
 
 .item {
+	text-align: left;
+	width: 100%;
+	border: none;
 	border-radius: 3px;
 	padding: 3px 5px;
 	cursor: pointer;
 	transition: all 0.2s ease;
+	background: transparent;
 
 	&:hover {
 		background-color: $lightgray;
 	}
-	&.focus {
+	&:focus {
 		background-color: $lightgray;
 	}
 }

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import useFetching from '../../hooks/useFetching';
-import axios from 'axios';
+import api from '../../http';
 import Search from '../search/Search';
 import classes from './search-banner.module.scss';
+import { getImageUrl } from '../../utils/utils';
 
 const customInputStyles = {
 	padding: '10px',
@@ -13,10 +14,8 @@ const customInputStyles = {
 export default function SearchBanner() {
 	const [bgImage, setBgImage] = useState(null);
 	const [fetchBgImage, loading, error] = useFetching(async () => {
-		const response = await axios.get('/images/random');
+		const response = await api.get('/images/random');
 		const { image, author, tags } = response.data;
-
-		console.log(image);
 		setBgImage(image);
 	});
 
@@ -30,16 +29,11 @@ export default function SearchBanner() {
 		<div className={classes.banner}>
 			<div
 				className={classes.img}
-				// FIXME change url
-				style={{
-					backgroundImage: `url(${`http://localhost:4760${bgImage.url_webp_full}`})`,
-				}}
+				style={{ backgroundImage: `url(${getImageUrl(bgImage.url_webp_full)})` }}
 			></div>
 			<div className={classes.bannerContent}>
 				<h1 className={classes.searchH1}>
-					You can find whatever you
-					<br />
-					want... I hope so :D
+					You can find whatever you want... I hope so :D
 				</h1>
 				<Search inputStyle={customInputStyles} showSvg={false} />
 				<h6 className={classes.searchH6}>

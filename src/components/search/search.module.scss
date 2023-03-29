@@ -44,7 +44,7 @@
 }
 
 .searchButton {
-	background: #eb455f;
+	background: $mildred;
 	padding: 5px 15px;
 	border-radius: 0 5px 5px 0;
 	font-style: normal;
@@ -54,6 +54,10 @@
 	color: #ffffff;
 	border: none;
 	cursor: pointer;
+
+	&:active {
+		opacity: 0.8;
+	}
 }
 
 .result {

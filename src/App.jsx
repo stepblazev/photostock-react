@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { publicRoutes, privateRoutes } from './routes';
 import Layout from './components/Layout';
+import { useSelector } from 'react-redux';
 
 function App() {
-	const isAuth = false;
+	const { isAuth } = useSelector((state) => state.auth);
 
 	return (
 		<Layout>

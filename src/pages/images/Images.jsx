@@ -4,6 +4,7 @@ import useFetching from '../../hooks/useFetching';
 import classes from './images.module.scss';
 import ImageList from '../../components/image-list/ImageList';
 import SearchBanner from '../../components/search-banner/SearchBanner';
+import api from '../../http';
 
 // FIXME
 export default function Images() {
@@ -11,7 +12,7 @@ export default function Images() {
 	const [images, setImages] = useState([]);
 
 	const [fetchImages, loading, error] = useFetching(async () => {
-		const { data } = await axios.get('/images', {
+		const { data } = await api.get('/images', {
 			params: {
 				_page: page,
 				_tags: ['wallpaper'].join(' '),
@@ -28,9 +29,9 @@ export default function Images() {
 	}, [page]);
 
 	return (
-		<div style={{ height: '100%' }}>
+		<div className={classes.image}>
 			<SearchBanner />
-			<ImageList images={images} />
+			{!loading && <ImageList images={images} />}
 		</div>
 	);
 }

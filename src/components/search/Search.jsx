@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import useTags from '../../hooks/useTags';
 import classes from './search.module.scss';

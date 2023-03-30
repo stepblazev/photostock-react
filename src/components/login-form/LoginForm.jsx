@@ -21,9 +21,9 @@ export default function LoginForm() {
 	return (
 		<form className={classes.form}>
 			<Link to='/registration' className={classes.formLink}>
-				Registration
+				Sign Up
 			</Link>
-			<h2 className={classes.formHeader}>Login</h2>
+			<h2 className={classes.formHeader}>Log In</h2>
 			<div data-header='Username:'>
 				<input
 					type='text'

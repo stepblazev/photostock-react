@@ -6,9 +6,10 @@ import { useSelector } from 'react-redux';
 import logo from '../../assets/siteLogo-cropped.svg';
 import Search from '../search/Search';
 import classes from './header.module.scss';
+import { getImageUrl } from '../../utils/utils';
 
 export default function Header() {
-	const { isAuth } = useSelector((state) => state.auth);
+	const { isAuth, username, avatar_url } = useSelector((state) => state.auth);
 
 	return (
 		<header className={classes.header}>
@@ -32,15 +33,15 @@ export default function Header() {
 							to='/profile'
 							className={[classes.account, 'hoverable'].join(' ')}
 						>
-							<BiUserCircle />
-							<span className={classes.link}>Account</span>
+							<img src={getImageUrl(avatar_url)} alt='AVATAR' />
+							<span className={classes.link}>{username}</span>
 						</Link>
 						<Link
 							to='/logout'
 							className={[classes.account, 'hoverable'].join(' ')}
 						>
 							<ImExit />
-							<span className={classes.link}>Logout</span>
+							{/* <span className={classes.link}>Logout</span> */}
 						</Link>
 					</>
 				) : (

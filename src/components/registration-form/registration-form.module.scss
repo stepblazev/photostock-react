@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+
+.form {
+	margin: 0 auto;
+	max-width: 300px;
+	padding: 10px;
+	background-color: $lightgray;
+
+	&Link {
+		float: right;
+	}
+
+	&Header {
+		margin-bottom: 20px;
+		font-size: 20px;
+	}
+
+	div::before {
+		display: block;
+		content: attr(data-header);
+	}
+
+	&Username,
+	&Password {
+		margin-bottom: 10px;
+		padding: 5px;
+		width: 100%;
+		border: 2px solid #ffffff;
+
+		&:focus {
+			outline: none;
+			border-color: $dark;
+		}
+	}
+
+	&Confirm {
+		position: relative;
+		left: 100%;
+		transform: translateX(-100%);
+
+		padding: 5px 20px;
+		background-color: $mildred;
+		color: #ffffff;
+		font-weight: 600;
+		border: none;
+	}
+}

@@ -14,7 +14,7 @@ export default function ImageItem({ image }) {
 					<img src={getImageUrl(image.author_url)} alt='' />
 					<h6>{image.author}</h6>
 				</div>
-				{/* FIXME style */}
+				{/* FIXME  */}
 				{/* <div className={likeClasses}>
 					{image.liked ? <AiFillHeart /> : <AiOutlineHeart />}
 					<span>{image.likes}</span>

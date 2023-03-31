@@ -9,9 +9,21 @@ export default function ImageList({ images }) {
 
 	return (
 		<div className={classes.imageList}>
-			{images.map((image) => (
-				<ImageItem key={image.id} image={image} />
-			))}
+			{/* FIXME */}
+			{/* <div className={classes.imageListSettings}>
+				<h2>Images</h2>
+				<select name='#' id='#'>
+					<option value='#' defaultChecked>
+						Latest
+					</option>
+					<option value='#'>Most liked</option>
+				</select>
+			</div> */}
+			<div className={classes.imageListContent}>
+				{images.map((image) => (
+					<ImageItem key={image.id} image={image} />
+				))}
+			</div>
 		</div>
 	);
 }

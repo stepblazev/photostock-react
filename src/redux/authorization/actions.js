@@ -40,7 +40,21 @@ export function logout() {
             localStorage.removeItem("token");
             dispatch({ type: LOGOUT });
         } catch (error) {
-            console.log(error);
+            dispatch(_error(error?.response?.data?.message || 'Something went wrong.'));
+        }
+    }
+}
+
+export function refresh() {
+    return async (dispatch) => {
+        try {
+            const response = await AuthService.refresh();
+            const { accessToken, username, avatar_url } = response.data;
+            const payload = { username, avatar_url };
+
+            localStorage.setItem("token", accessToken);
+            dispatch({ type: LOGIN, payload });
+        } catch (error) {
             dispatch(_error(error?.response?.data?.message || 'Something went wrong.'));
         }
     }

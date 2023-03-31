@@ -3,11 +3,19 @@
 .imageItem {
 	display: block;
 	position: relative;
-	width: calc(100% / 3 - 5px);
+	width: calc(100% / 3 - 4px);
 
 	border-radius: 7px;
 	overflow: hidden;
 	cursor: pointer;
+
+	// FIXME
+	@media (max-width: 800px) {
+		width: calc(100% / 2 - 3px);
+	}
+	@media (max-width: 460px) {
+		width: calc(100%);
+	}
 
 	img {
 		display: block;

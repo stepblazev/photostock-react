@@ -4,7 +4,7 @@ export function getImageUrl(imageUrl) {
     return API_URL + imageUrl;
 }
 
-// NOTE review
+// NOTE need some fixes
 export function arraySlicer(arr, parts) {
     const length = arr.length;
 

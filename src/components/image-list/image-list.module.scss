@@ -1,6 +1,7 @@
 @import '../../styles/variables';
 
 .imageList {
+	overflow: hidden;
 	&Settings {
 		margin-bottom: 10px;
 		display: flex;

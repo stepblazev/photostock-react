@@ -1,0 +1,60 @@
+@import '../../../styles/variables';
+
+@mixin setAnimation($name) {
+	animation-name: $name;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-fill-mode: none;
+}
+
+@keyframes leftRotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes rightRotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+@mixin replace($x, $y) {
+	position: relative;
+	left: $x;
+	bottom: $y;
+}
+
+.loader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	&GearTop,
+	&GearBottom {
+		width: 70px;
+		height: 70px;
+	}
+
+	&GearTop {
+		@include setAnimation(leftRotate);
+		@include replace(-18px, -12px);
+		fill: $mildred;
+		color: $mildred;
+	}
+	&GearBottom {
+		@include setAnimation(rightRotate);
+		@include replace(13px, 12px);
+		fill: $darkblue;
+		color: $darkblue;
+	}
+}

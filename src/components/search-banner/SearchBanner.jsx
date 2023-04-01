@@ -8,6 +8,7 @@ import { getImageUrl } from '../../utils/utils';
 const customInputStyles = {
 	padding: '10px',
 	fontSize: '18px',
+	letterSpacing: '2px',
 };
 
 // FIXME decompose!!!
@@ -23,13 +24,15 @@ export default function SearchBanner() {
 		fetchBgImage();
 	}, []);
 
-	if (!bgImage) return;
-
 	return (
 		<div className={classes.banner}>
 			<div
 				className={classes.img}
-				style={{ backgroundImage: `url(${getImageUrl(bgImage.url_webp_full)})` }}
+				style={
+					bgImage && {
+						backgroundImage: `url(${getImageUrl(bgImage.url_webp_full)})`,
+					}
+				}
 			></div>
 			<div className={classes.bannerContent}>
 				<h1 className={classes.searchH1}>

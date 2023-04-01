@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './styles/index.scss';
 
-// axios.defaults.baseURL = `${API_URL}/api`; // FIXME
+axios.defaults.baseURL = `${API_URL}/api`;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>

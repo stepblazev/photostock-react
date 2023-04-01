@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import useFetching from '../../hooks/useFetching';
 import classes from './images.module.scss';
 import ImageList from '../../components/image-list/ImageList';
 import SearchBanner from '../../components/search-banner/SearchBanner';
 import api from '../../http';
+import LoaderGear from '../../components/_UI/loader-gear/LoaderGear';
 
 // FIXME
 export default function Images() {
@@ -31,7 +31,7 @@ export default function Images() {
 	return (
 		<div className={classes.image}>
 			<SearchBanner />
-			{!loading && <ImageList images={images} />}
+			{loading ? <LoaderGear /> : <ImageList images={images} />}
 		</div>
 	);
 }

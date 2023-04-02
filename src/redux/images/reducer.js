@@ -21,9 +21,9 @@ export const imageReducer = (state = initialState, action) => {
         case ERROR:
             return { ...state, loading: false, total: 0, error: action.payload };
         case SET_TAGS:
-            return { ...state, tags: action.payload };
+            return { ...state, tags: action.payload, page: initialState.page };
         case SET_ORDER:
-            return { ...state, order: action.payload };
+            return { ...state, order: action.payload, page: initialState.page };
         case SET_PAGE:
             return { ...state, page: action.payload };
         case RESET_FILTER:

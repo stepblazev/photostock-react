@@ -4,7 +4,6 @@ import useTags from '../../hooks/useTags';
 import classes from './search.module.scss';
 import SearchResult from './SearchResult';
 
-// FIXME
 export default function Search({ inputStyle, showSvg = true }) {
 	const inputRef = useRef();
 	const { signature, setSignature, fetchedTags, loading } = useTags();
@@ -20,6 +19,8 @@ export default function Search({ inputStyle, showSvg = true }) {
 		setSignature(tags.join(' ') + ' ');
 		inputRef.current.focus();
 	};
+
+	const submit = () => {};
 
 	// const moveInput = (e) => {
 	// 	if (e.key === 'ArrowDown') {
@@ -38,12 +39,14 @@ export default function Search({ inputStyle, showSvg = true }) {
 				placeholder='Type something...'
 			/>
 			{showSvg && <BiSearchAlt2 />}
-			{/* FIXME */}
+			{/* FIXME (search tags) */}
 			{!loading &&
 				signature.split(' ')[signature.split(' ').length - 1].length > 0 && (
 					<SearchResult fetchedTags={fetchedTags} addTag={addTag} />
 				)}
-			<button className={classes.searchButton}>Search</button>
+			<button className={classes.searchButton} onClick={submit}>
+				Search
+			</button>
 		</div>
 	);
 }

@@ -11,7 +11,7 @@ const customInputStyles = {
 	letterSpacing: '2px',
 };
 
-// FIXME decompose!!!
+// FIXME (decompose random image)
 export default function SearchBanner() {
 	const [bgImage, setBgImage] = useState(null);
 	const [fetchBgImage, loading, error] = useFetching(async () => {
@@ -25,7 +25,7 @@ export default function SearchBanner() {
 	}, []);
 
 	return (
-		<div className={classes.banner}>
+		<section className={classes.banner}>
 			<div
 				className={classes.img}
 				style={
@@ -40,10 +40,10 @@ export default function SearchBanner() {
 				</h1>
 				<Search inputStyle={customInputStyles} showSvg={false} />
 				<h6 className={classes.searchH6}>
-					Just type your keywords. For example: abstract, black, wallpaper and
+					Just type your keywords. For example: abstract, dark, wallpaper and
 					etc.
 				</h6>
 			</div>
-		</div>
+		</section>
 	);
 }

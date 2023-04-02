@@ -1,10 +1,16 @@
-import { API_URL } from "../_config";
+import { API_URL, IMAGES_AMOUNT } from "../_config";
 
 export function getImageUrl(imageUrl) {
     return API_URL + imageUrl;
 }
 
-// NOTE need some fixes
+export function getArrayOfNumber(total) {
+    const lastPage = Math.ceil(total / IMAGES_AMOUNT);
+    if (lastPage <= 1) return [1];
+    return Array(lastPage).fill(0).map((e, index) => index + 1);
+}
+
+// NOTE need some fixes (unused)
 export function arraySlicer(arr, parts) {
     const length = arr.length;
 

@@ -8,6 +8,7 @@ import Error from '../../components/_UI/error/Error';
 import { fetching } from '../../redux/images/actions';
 import { ERROR_MESSAGE } from '../../_config';
 import classes from './images.module.scss';
+import ImagePagination from '../../components/image-pagination/ImagePagination';
 
 export default function Images() {
 	const dispatch = useDispatch();
@@ -30,6 +31,7 @@ export default function Images() {
 			) : (
 				<ImageList images={images} />
 			)}
+			<ImagePagination />
 		</div>
 	);
 }

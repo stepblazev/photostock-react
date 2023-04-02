@@ -38,10 +38,9 @@ export default function Header() {
 						</Link>
 						<Link
 							to='/logout'
-							className={[classes.account, 'hoverable'].join(' ')}
+							className={[classes.logout, 'hoverable'].join(' ')}
 						>
 							<ImExit />
-							{/* <span className={classes.link}>Logout</span> */}
 						</Link>
 					</>
 				) : (

@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+
+.pagination {
+	margin: 0 auto;
+	max-width: 250px;
+	padding: 10px 0;
+
+	&Content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+	}
+}
+
+.page {
+	padding: 7px;
+	color: $dark;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.active {
+	background-color: $lightgray;
+	font-weight: 700;
+}

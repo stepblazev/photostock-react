@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { ORDER_VALUES } from '../../_config';
 import { setOrder } from '../../redux/images/actions';
 import classes from './image-filter.module.scss';
+import { ORDER_VALUES } from '../../_config';
 
 export function ImageFilter() {
 	const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export function ImageFilter() {
 
 	return (
 		<div className={classes.filter}>
-			<h2>Images</h2>
+			<h2 className={classes.filterHeader}>Images</h2>
 			<div className={classes.filterSelect}>
 				<span>Order by:</span>
 				<select name='order' onChange={changeOrder}>

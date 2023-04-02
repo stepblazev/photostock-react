@@ -13,7 +13,7 @@ export default function RegistrationForm() {
 
 	const { error } = useSelector((state) => state.auth);
 
-	// FIXME
+	// FIXME (fix the validation)
 	const confirm = (e) => {
 		e.preventDefault();
 		if (username.length === 0 || password_1.length === 0 || password_2.length === 0) {
@@ -27,7 +27,7 @@ export default function RegistrationForm() {
 		dispatch(registration(username, password_1));
 	};
 
-	// FIXME STYLE THESE ELEMENTS
+	// FIXME (style these elements)
 	return (
 		<form className={classes.form}>
 			<Link to='/login' className={classes.formLink}>

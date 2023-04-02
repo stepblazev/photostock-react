@@ -8,4 +8,9 @@ $lightgray: #e6e6e6;
 
 // CONTAINER
 $container_width: 1200px;
-$container_padding: 20px;
+$container_padding: 10px;
+
+// ADAPTIVE
+@media (max-width: 768px) {
+	$my-container_padding: 10px;
+}

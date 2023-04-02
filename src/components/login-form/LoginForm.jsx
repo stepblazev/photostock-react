@@ -17,7 +17,7 @@ export default function LoginForm() {
 		dispatch(login(username, password));
 	};
 
-	// FIXME STYLE THESE ELEMENTS
+	// FIXME (style these elements)
 	return (
 		<form className={classes.form}>
 			<Link to='/registration' className={classes.formLink}>

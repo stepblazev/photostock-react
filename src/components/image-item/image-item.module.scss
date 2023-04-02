@@ -6,11 +6,11 @@
 	height: 300px;
 	flex-basis: calc(100% / 3 - 3.5px);
 
-	border-radius: 7px;
+	border-radius: 5px;
 	overflow: hidden;
 	cursor: pointer;
 
-	// FIXME
+	// FIXME (styles for tile in image list)
 	@media (max-width: 800px) {
 		flex-basis: calc(100% / 2 - 3px);
 	}
@@ -88,32 +88,37 @@
 	top: 50px;
 	transition: all 0.2s ease;
 
-	padding: 4px;
+	padding: 5px;
 	border-radius: 3px;
 	background-color: #ffffff;
 
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 3px;
+	align-items: end;
+	gap: 5px;
 	user-select: none;
 
 	svg {
 		fill: lightgray;
+
 		height: 20px;
 		width: 20px;
+
+		path {
+			stroke: lightgray;
+		}
 	}
 
 	span {
 		color: lightgray;
-		font-size: 18px;
+		font-size: 20px;
 		font-weight: 400;
+		line-height: 100%;
 	}
 
 	&Liked {
 		svg,
 		span {
-			fill: $mildred !important;
+			fill: $mildred;
 			color: $mildred;
 		}
 	}

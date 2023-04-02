@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from "../../_config";
 import AuthService from "../../services/AuthService";
 import { LOGIN, LOGOUT, ERROR } from "./types";
 
@@ -12,7 +13,7 @@ export function login(username, password) {
 
             dispatch({ type: LOGIN, payload });
         } catch (error) {
-            dispatch(_error(error?.response?.data?.message || 'Something went wrong.'));
+            dispatch(authError(error?.response?.data?.message || ERROR_MESSAGE));
         }
     }
 }
@@ -28,7 +29,7 @@ export function registration(username, password) {
 
             dispatch({ type: LOGIN, payload });
         } catch (error) {
-            dispatch(_error(error?.response?.data?.message || 'Something went wrong.'));
+            dispatch(authError(error?.response?.data?.message || ERROR_MESSAGE));
         }
     }
 }
@@ -40,7 +41,7 @@ export function logout() {
             localStorage.removeItem("token");
             dispatch({ type: LOGOUT });
         } catch (error) {
-            dispatch(_error(error?.response?.data?.message || 'Something went wrong.'));
+            dispatch(authError(error?.response?.data?.message || ERROR_MESSAGE));
         }
     }
 }
@@ -55,11 +56,11 @@ export function refresh() {
             localStorage.setItem("token", accessToken);
             dispatch({ type: LOGIN, payload });
         } catch (error) {
-            dispatch(_error(error?.response?.data?.message || 'Something went wrong.'));
+            dispatch(authError(error?.response?.data?.message || ERROR_MESSAGE));
         }
     }
 }
 
-export function _error(message) {
+export function authError(message) {
     return { type: ERROR, payload: message };
 }

@@ -1,37 +1,35 @@
-import { useState, useEffect } from 'react';
-import useFetching from '../../hooks/useFetching';
-import classes from './images.module.scss';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ImageList from '../../components/image-list/ImageList';
 import SearchBanner from '../../components/search-banner/SearchBanner';
-import api from '../../http';
 import LoaderGear from '../../components/_UI/loader-gear/LoaderGear';
+import { ImageFilter } from '../../components/image-filter/ImageFilter';
+import Error from '../../components/_UI/error/Error';
+import { fetching } from '../../redux/images/actions';
+import { ERROR_MESSAGE } from '../../_config';
+import classes from './images.module.scss';
 
-// FIXME
 export default function Images() {
-	const [page, setPage] = useState(1);
-	const [images, setImages] = useState([]);
-
-	const [fetchImages, loading, error] = useFetching(async () => {
-		const { data } = await api.get('/images', {
-			params: {
-				_page: page,
-				_tags: ['wallpaper'].join(' '),
-				_order: 'latest',
-			},
-		});
-
-		const images = data.images.map((image) => ({ ...image, liked: false }));
-		setImages(images);
-	});
+	const dispatch = useDispatch();
+	const { images, loading, error, tags, order, page } = useSelector(
+		(state) => state.images
+	);
 
 	useEffect(() => {
-		fetchImages();
-	}, [page]);
+		dispatch(fetching());
+	}, [page, order, tags]);
 
 	return (
 		<div className={classes.image}>
 			<SearchBanner />
-			{loading ? <LoaderGear /> : <ImageList images={images} />}
+			<ImageFilter />
+			{loading ? (
+				<LoaderGear />
+			) : Boolean(error) ? (
+				<Error message={ERROR_MESSAGE} />
+			) : (
+				<ImageList images={images} />
+			)}
 		</div>
 	);
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import classes from './registration-form.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { registration, _error } from '../../redux/authorization/actions';
+import { registration } from '../../redux/authorization/actions';
 
 export default function RegistrationForm() {
 	const dispatch = useDispatch();

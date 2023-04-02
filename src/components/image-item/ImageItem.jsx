@@ -15,10 +15,10 @@ export default function ImageItem({ image }) {
 					<h6>{image.author}</h6>
 				</div>
 				{/* FIXME  */}
-				{/* <div className={likeClasses}>
+				<div className={likeClasses}>
 					{image.liked ? <AiFillHeart /> : <AiOutlineHeart />}
 					<span>{image.likes}</span>
-				</div> */}
+				</div>
 			</div>
 		</Link>
 	);

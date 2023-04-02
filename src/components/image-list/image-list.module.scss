@@ -3,25 +3,9 @@
 .imageList {
 	overflow: hidden;
 
-	&Settings {
-		margin-bottom: 10px;
-		display: flex;
-		justify-content: space-between;
-
-		h2 {
-			letter-spacing: 3px;
-			font-size: 24px;
-			color: $dark;
-		}
-
-		select {
-			width: 200px;
-		}
-	}
-
 	&Content {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 3px;
+		gap: 5px;
 	}
 }

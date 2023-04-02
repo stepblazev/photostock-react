@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import classes from './login-form.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, _error } from '../../redux/authorization/actions';
+import { login } from '../../redux/authorization/actions';
 
 export default function LoginForm() {
 	const dispatch = useDispatch();

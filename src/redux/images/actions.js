@@ -15,7 +15,6 @@ export function fetching() {
                     _order: order,
                 },
             });
-
             dispatch(imageSuccessful(response.data));
         } catch (error) {
             dispatch(imageError(error?.response?.data?.message || ERROR_MESSAGE));

@@ -1,11 +1,16 @@
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { GrLike, GrLikeFill } from 'react-icons/gr';
 import classes from './image-item.module.scss';
 import { Link } from 'react-router-dom';
 import { getImageUrl } from '../../utils/utils';
 
 export default function ImageItem({ image }) {
 	const likeClasses = [classes.likes, image.liked ? classes.likesLiked : ''].join(' ');
+
+	const toggleLike = (e) => {
+		e.preventDefault();
+
+		// FIXME LIKE SYSTEM
+	};
 
 	return (
 		<Link to={`/images/${image.id}`} className={classes.imageItem}>
@@ -15,10 +20,8 @@ export default function ImageItem({ image }) {
 					<img src={getImageUrl(image.author_url)} alt='' />
 					<h6>{image.author}</h6>
 				</div>
-				{/* FIXME (like system) */}
-				<div className={likeClasses}>
-					{/* {image.liked ? <AiFillHeart /> : <AiOutlineHeart />} */}
-					{image.liked ? <GrLikeFill /> : <GrLike />}
+				<div className={likeClasses} onClick={toggleLike}>
+					{Boolean(image.liked) ? <AiFillHeart /> : <AiOutlineHeart />}
 					<span>{image.likes}</span>
 				</div>
 			</div>
